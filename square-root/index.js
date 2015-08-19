@@ -1,3 +1,8 @@
+/**
+ * Square root - https://github.com/podefr/computer-science/
+ * Copyright(c) 2015 Olivier Scherrer <pode.fr@gmail.com>
+ * MIT Licensed
+ */
 function squareRootNaive(number, max, min, i) {
 
     // The square root of number has to be between 1 and itself
