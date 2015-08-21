@@ -1,3 +1,5 @@
+"use strict";
+
 /**
  * Square root - https://github.com/podefr/computer-science/
  * Copyright(c) 2015 Olivier Scherrer <pode.fr@gmail.com>
