@@ -7,6 +7,7 @@ module.exports = function bsearch(array, item, min, max) {
 
     var middle = Math.floor((min + max) / 2);
 
+    // Why don't we directly test the boundaries as well as the middle, that would save some iterations right?
     if (min === (max - 1)) {
         if (array[min] === item) {
             return min;
