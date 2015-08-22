@@ -72,8 +72,14 @@ var text = new Text("adipisci velit, sed quia non numquam eius modi tempora inci
 
 console.log(text.search("vel"));
 console.log(text.highlight("vel"));
+console.log(text.isPalindrom());
 
 var palindrom = new Text("Engage le jeu que je le gagne");
 
 console.log(palindrom.isPalindrom());
 console.log(palindrom.isPalindromInPlace());
+
+var notPalindrom = new Text("Engage le jeuque je le ggne");
+
+console.log(notPalindrom.isPalindrom());
+console.log(notPalindrom.isPalindromInPlace());
