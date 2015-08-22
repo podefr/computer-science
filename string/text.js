@@ -19,10 +19,8 @@ function Text(text) {
     };
 
     this.highlight = function mark(searchString) {
-        return text.split(searchString).join(this.tags[0] +  searchString + this.tags[1]);
+        return text.split(searchString).join("<em>" +  searchString + "</em>");
     };
-
-    this.tags = ["<em>", "</em>"];
 }
 
 
