@@ -20,9 +20,11 @@ module.exports = function bsearch(array, item, min, max) {
         return middle;
     } else if (typeof array[middle] != typeof item) {
         return item + " invalid type";
-    } else if (item > array[middle]) {
-        return bsearch(array, item, middle, max);
-    } else if (item < array[middle]) {
+    } else if (array[middle] > item) {
         return bsearch(array, item, min, middle);
+    }
+    // This block implies array[middle] <= item!
+    else {
+        return bsearch(array, item, middle, max);
     }
 };
