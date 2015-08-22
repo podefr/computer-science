@@ -4,7 +4,6 @@
  * @param {Array} array2
  * @returns {Array} array1 + array2
  */
-
 function mergeSortedInPlace(array1, array2) {
     var length = array1.length + array2.length;
 
@@ -22,6 +21,12 @@ function mergeSortedInPlace(array1, array2) {
     return array1;
 }
 
+/**
+ * Merges array1 and array2 into a new array in O(n+m)
+ * @param {Array} array1
+ * @param {Array} array2
+ * @returns {Array} array1 + array2
+ */
 function mergeSorted(array1, array2) {
     var length = array1.length + array2.length;
     var newArray = [];
