@@ -1,6 +1,6 @@
 "use strict";
 
-function Text(text) {
+module.exports = function Text(text) {
     var textLength = text.length;
 
     this.search = function search(searchString) {
@@ -62,24 +62,31 @@ function Text(text) {
 
         return same;
     };
-}
 
+    /**
+     * Finds all permutations of a given string. It runs in O(n!)
+     * I copied this, I need to analyze it further
+     * @returns {Array} an array of strings
+     */
+    this.permute = function permute() {
+        var permutations = [];
 
-var text = new Text("adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. " +
-"Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi" +
-" consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, " +
-"vel illum qui dolorem eum fugiat quo voluptas nulla pariatur");
+        function doPermute(arrayString, memo) {
+            var current;
+            memo = memo || [];
 
-console.log(text.search("vel"));
-console.log(text.highlight("vel"));
-console.log(text.isPalindrom());
+            for (var i = 0; i < arrayString.length; i++) {
+                current = arrayString.splice(i, 1);
+                if (!arrayString.length) {
+                    permutations.push(memo.concat(current).join(""));
+                }
+                doPermute(arrayString.slice(), memo.concat(current));
+                arrayString.splice(i, 0, current[0]);
+            }
 
-var palindrom = new Text("Engage le jeu que je le gagne");
+            return permutations;
+        }
 
-console.log(palindrom.isPalindrom());
-console.log(palindrom.isPalindromInPlace());
-
-var notPalindrom = new Text("Engage le jeuque je le ggne");
-
-console.log(notPalindrom.isPalindrom());
-console.log(notPalindrom.isPalindromInPlace());
+        return doPermute(text.split(""));
+    };
+};
