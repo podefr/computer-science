@@ -4,10 +4,10 @@ var LinkedList = require("./index");
 
 var linkedList = new LinkedList();
 
-linkedList.insert(0);
-linkedList.insert(1);
-linkedList.insert(2);
-linkedList.insert(3);
+linkedList.add(0);
+linkedList.add(1);
+linkedList.add(2);
+linkedList.add(3);
 
 console.log(linkedList.length());
 
@@ -35,11 +35,17 @@ linkedList.delete(3);
 
 console.log(linkedList.toArray());
 
-linkedList.insert(5);
-linkedList.insert(6);
+linkedList.add(5);
+linkedList.add(6);
 
 console.log(linkedList.toArray());
 
-var linkedList2 = new LinkedList([{id: 1}, {id: 2}, {id: 3}]);
+var linkedList2 = new LinkedList([{id: 1}, {id: 2}, {id: 3}, {id: 4}]);
+
+console.log(linkedList2.toArray());
+
+var item2 = linkedList2.get(1);
+linkedList2.delete(item2);
+linkedList2.insert(item2, 2);
 
 console.log(linkedList2.toArray());

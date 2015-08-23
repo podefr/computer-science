@@ -5,7 +5,7 @@ module.exports = function LinkedList(items) {
     var _foot;
     var _length = 0;
 
-    this.insert = function insert(item) {
+    this.add = function add(item) {
         _length++;
 
         if (!_head) {
@@ -38,6 +38,20 @@ module.exports = function LinkedList(items) {
                 }
             }
         });
+    };
+
+    this.insert = function insert(item, position) {
+        var newItem;
+
+        var previousItem = traverse(function () {
+            return !--position;
+        });
+
+        if (previousItem) {
+            newItem = createNode(item);
+            newItem.next = previousItem.next;
+            previousItem.next = newItem;
+        }
     };
 
     this.get = function get(index) {
@@ -75,7 +89,7 @@ module.exports = function LinkedList(items) {
 
     if (items) {
         items.forEach(function (item) {
-            this.insert(item);
+            this.add(item);
         }, this);
     }
 
