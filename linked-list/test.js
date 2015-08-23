@@ -28,6 +28,7 @@ console.log(linkedList.get(0));
 console.log(linkedList.get(1));
 console.log(linkedList.get(2));
 console.log(linkedList.get(3));
+console.log(linkedList.get(5));
 
 linkedList.delete(2);
 

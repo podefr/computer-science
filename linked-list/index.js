@@ -21,7 +21,10 @@ module.exports = function LinkedList(items) {
         if (_head.item === item) {
             if (_head.next) {
                 _head = _head.next;
+            } else {
+                _head = null;
             }
+            return true;
         }
 
         traverse(function (node) {
