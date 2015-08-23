@@ -24,7 +24,7 @@ module.exports = function LinkedList(items) {
             } else {
                 _head = null;
             }
-            return true;
+            return;
         }
 
         traverse(function (node) {
