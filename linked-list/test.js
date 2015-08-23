@@ -21,3 +21,10 @@ console.log(linkedList.has(5), "5");
 linkedList.forEach(function (item) {
    console.log(item);
 });
+
+console.log(linkedList.toArray());
+
+console.log(linkedList.get(0));
+console.log(linkedList.get(1));
+console.log(linkedList.get(2));
+console.log(linkedList.get(3));

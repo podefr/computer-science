@@ -34,12 +34,18 @@ module.exports = function LinkedList() {
         });
     };
 
-    this.has = function has(item) {
-        return !!traverse(function (node, next) {
-            var hasItem = node.item === item ||
-                    next && next.item === item;
+    this.get = function get(index) {
+        var node = traverse(function () {
+            return !index--;
+        });
+        if (node) {
+            return node.item;
+        }
+    };
 
-            return hasItem;
+    this.has = function has(item) {
+        return !!traverse(function (node) {
+            return node.item === item;
         });
     };
 
@@ -51,6 +57,14 @@ module.exports = function LinkedList() {
         traverse(function (node) {
             func.call(scope, node.item);
         });
+    };
+
+    this.toArray = function toArray() {
+        var array = [];
+        traverse(function (node) {
+            array.push(node.item);
+        });
+        return array;
     };
 
     function createNode(item) {
