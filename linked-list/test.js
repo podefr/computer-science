@@ -31,10 +31,14 @@ console.log(linkedList.get(3));
 console.log(linkedList.get(5));
 
 linkedList.delete(2);
+linkedList.delete(3);
 
 console.log(linkedList.toArray());
 
+linkedList.insert(5);
+linkedList.insert(6);
 
+console.log(linkedList.toArray());
 
 var linkedList2 = new LinkedList([{id: 1}, {id: 2}, {id: 3}]);
 

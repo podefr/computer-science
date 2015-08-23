@@ -32,6 +32,9 @@ module.exports = function LinkedList(items) {
             if (nextItem && nextItem.item === item) {
                 if (nextItem.next) {
                     node.next = nextItem.next;
+                } else {
+                    // otherwise its the foot so we need to move the foot up one node
+                    _foot = node;
                 }
             }
         });
