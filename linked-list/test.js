@@ -28,3 +28,13 @@ console.log(linkedList.get(0));
 console.log(linkedList.get(1));
 console.log(linkedList.get(2));
 console.log(linkedList.get(3));
+
+linkedList.delete(2);
+
+console.log(linkedList.toArray());
+
+
+
+var linkedList2 = new LinkedList([{id: 1}, {id: 2}, {id: 3}]);
+
+console.log(linkedList2.toArray());

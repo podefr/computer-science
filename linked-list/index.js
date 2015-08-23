@@ -1,6 +1,6 @@
 "use strict";
 
-module.exports = function LinkedList() {
+module.exports = function LinkedList(items) {
     var _head;
     var _foot;
     var _length = 0;
@@ -67,6 +67,12 @@ module.exports = function LinkedList() {
         return array;
     };
 
+    if (items) {
+        items.forEach(function (item) {
+            this.insert(item);
+        }, this);
+    }
+
     function createNode(item) {
         return {
             item: item,
@@ -76,11 +82,17 @@ module.exports = function LinkedList() {
 
     function traverse(callback) {
         var current = _head;
+
+        if (callback(_head)) {
+            return _head;
+        }
+
         while (current.next) {
-            if (callback && callback(current, current.next)) {
+            current = current.next;
+
+            if (callback(current)) {
                 return current;
             }
-            current = current.next;
         }
     }
 };
