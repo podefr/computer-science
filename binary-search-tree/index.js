@@ -2,32 +2,39 @@
 
 module.exports = function BST() {
 
-    var _size = 0;
     var _head;
 
     this.insert = function insert(item) {
         if (!_head) {
             _head = createNode(item);
-            _size++;
         } else {
             addToParentNode(item);
         }
     };
 
-    this.delete = function delete_() {
-
+    this.delete = function delete_(item) {
     };
 
-    this.forEach = function forEach() {
-
+    this.forEach = function forEach(func, scope) {
+        traverse(function (node) {
+            func.call(scope, node.item);
+        });
     };
 
-    this.search = function search() {
-
+    this.toArray = function toArray() {
+        var array = [];
+        traverse(function (node) {
+            array.push(node.item);
+        });
+        return array;
     };
 
     this.size = function size() {
-        return _size;
+        var count = 0;
+        traverse(function () {
+            count++;
+        });
+        return count;
     };
 
     this.getHead = function getHead() {
@@ -40,6 +47,21 @@ module.exports = function BST() {
             left: null,
             right: null
         }
+    }
+
+    function traverse(callback) {
+        function inOrder(current) {
+            if (current.left) {
+                inOrder(current.left);
+            }
+
+            callback(current);
+
+            if (current.right) {
+                inOrder(current.right);
+            }
+        }
+        inOrder(_head);
     }
 
     function addToParentNode(item, current) {
