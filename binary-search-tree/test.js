@@ -2,14 +2,16 @@ var BST = require("./index");
 
 var bst = new BST;
 
-bst.addArray([5, 10, 15, 20, 25, 30]);
+var array = [5, 10, 15, 20, 25, 30];
+
+bst.addArray(array);
 
 
 console.log(bst.getHead());
 
 console.log("array", bst.toArray());
 
-console.log(bst.length());
+console.log("size", bst.size());
 
 bst.forEach(function (item) {
    console.log(item);
@@ -22,17 +24,12 @@ bst.erase();
 
 console.log("insert items unbalanced");
 
-bst.insert(5);
-bst.insert(10);
-bst.insert(15);
-bst.insert(20);
-bst.insert(25);
-bst.insert(30);
+array.forEach(bst.insert, bst);
 
 console.log("depth is", bst.depth());
 console.log(bst.getHead());
 
-bst.flatten();
+bst.delete(20);
 
 console.log("new depth", bst.depth());
 console.log(bst.getHead());

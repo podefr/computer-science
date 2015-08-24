@@ -34,7 +34,21 @@ module.exports = function BST() {
     };
 
     this.delete = function delete_(item) {
+        // The proper way to do this is to find the node, unlink it, get its children
+        // and then call addArray on its parent
 
+        // I'm not doing it here as this was a learning exercise and the core logic is already implemented
+        // but there's a better implementation here where each node is a BST:
+        // https://github.com/isaacs/computer-science-in-javascript/blob/master/data-structures/binary-search-tree/binary-search-tree.js
+
+        // As a lazy guy I'm using the much less efficient solution that defeats the purpose, but at least rebalances the whole tree
+        var items = this.toArray();
+        var index = items.indexOf(item);
+
+        items.splice(index, 1);
+
+        this.erase();
+        this.addArray(items);
     };
 
     this.forEach = function forEach(func, scope) {
@@ -51,7 +65,7 @@ module.exports = function BST() {
         return array;
     };
 
-    this.length = function length() {
+    this.size = function size() {
         var count = 0;
         traverse(function () {
             count++;
@@ -80,6 +94,25 @@ module.exports = function BST() {
         }
     }
 
+    // Todo: find a way to reuse the traversal logic
+    function find(item, current) {
+        current = current || _head;
+
+        if (current.item === item) {
+            return item;
+        }
+
+        if (item > current.item) {
+            return find(item, current.right);
+        }
+
+        if (item < current.item) {
+            return find(item, current.left);
+        }
+
+
+    }
+
     function traverse(callback) {
         function inOrder(current, depth) {
             depth = depth || 0;
@@ -89,6 +122,7 @@ module.exports = function BST() {
             }
 
             callback(current, depth);
+
 
             if (current.right) {
                 inOrder(current.right, depth + 1);
