@@ -16,6 +16,6 @@ var tree =  {
     "G": ["C"]
 };
 
-dfs(tree, "A", function (node, depth) {
-    console.log(node, depth);
+dfs(tree, "A", function (node) {
+    console.log(node);
 });
