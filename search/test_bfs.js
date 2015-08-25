@@ -1,19 +1,20 @@
 var bfs = require("./bfs");
 
+// Note that we've switched G and B to prove that the BFS works
 //       A
 //     /   \
-//    B     C
+//    G     C
 //   / \   / \
-//  D  E  F   G
+//  D  E  F   B
 
 var tree =  {
-    "A": ["B", "C"],
-    "B": ["A", "D", "E"],
-    "C": ["A", "F", "G"],
-    "D": ["B"],
-    "E": ["B"],
+    "A": ["G", "C"],
+    "G": ["A", "D", "E"],
+    "E": ["G"],
     "F": ["C"],
-    "G": ["C"]
+    "B": ["C"],
+    "C": ["A", "F", "B"],
+    "D": ["G"]
 };
 
 bfs(tree, "A", function (node) {
