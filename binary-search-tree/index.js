@@ -34,7 +34,7 @@ module.exports = function BST() {
     };
 
     this.delete = function delete_(item) {
-        // The proper way to do this is to find the node, unlink it, get its children
+        // The proper way to do this is to find the node, unlink it, get its children as an array
         // and then call addArray on its parent
 
         // I'm not doing it here as this was a learning exercise and the core logic is already implemented
