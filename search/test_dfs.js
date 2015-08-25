@@ -16,6 +16,13 @@ var tree =  {
     "G": ["C"]
 };
 
+var print = [];
+
 dfs(tree, "A", function (node, depth) {
-    console.log(node, depth);
+    print[depth] = print[depth] || [];
+    print[depth].push(node);
+});
+
+print.forEach(function (row) {
+    console.log(row.join(""));
 });
