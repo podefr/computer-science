@@ -11,16 +11,18 @@ module.exports = function dfs(adjencyList, startNode, callback) {
         return !visited[node];
     }
 
-    function dfs_recursive(node) {
+    function dfs_recursive(node, depth) {
+        depth = depth || 0;
+
         var adjacent = adjencyList[node];
 
         mark(node);
 
-        callback(node);
+        callback(node, depth);
 
         adjacent.forEach(function (adjacentNode) {
             if (isUnvisited(adjacentNode)) {
-                dfs_recursive(adjacentNode);
+                dfs_recursive(adjacentNode, depth + 1);
             }
         });
     }
