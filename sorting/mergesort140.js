@@ -3,11 +3,11 @@ function m(a, b, n) {
     return n;
 }
 
-function ms(a, l) {
+function s(a, l) {
     l = a.length;
-    return l < 2 ? a : m(ms(a.splice(0, ~~l / 2)), ms(a), []);
+    return l < 2 ? a : m(s(a.splice(0, ~~l / 2)), s(a), []);
 }
 
-console.log(ms("MERGESORT".split("")));
-console.log(ms([-10, 3.4, 1, 6.5, 12, -3.14]));
+console.log(s("MERGESORT".split("")));
+console.log(s([-10, 3.4, 1, 6.5, 12, -3.14]));
 
