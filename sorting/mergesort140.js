@@ -13,3 +13,6 @@ function s(a, l) {
 console.log(s("MERGESORT".split("")));
 console.log(s([-10, 3.4, 1, 6.5, 12, -3.14]));
 
+// the 0 here breaks the while loop in the merge function
+console.log(s([-10, 3.4, 1, 6.5, 0, -3.14]));
+
