@@ -1,21 +1,14 @@
 "use strict";
 
 function merge(array1, array2) {
-
     var newLength = array1.length + array2.length;
     var newArray = [];
 
     while (newLength--) {
-        if (array1[0] <= array2[0]) {
+        if (array1[0] <= array2[0] || !array2.length) {
             newArray.push(array1.shift());
         } else {
-            if (array2.length) {
-                newArray.push(array2.shift());
-            }
-
-            if (!array2.length && array1.length) {
-                newArray.push(array1.shift());
-            }
+            newArray.push(array2.shift());
         }
     }
     return newArray;
