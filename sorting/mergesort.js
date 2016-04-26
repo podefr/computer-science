@@ -16,7 +16,7 @@ function merge(array1, array2) {
 function mergeSort(array) {
     var arrayLeft;
 
-    if (array.length <= 1) {
+    if (array.length < 2) {
         return array;
     } else {
         arrayLeft = array.splice(0, Math.floor(array.length / 2));
