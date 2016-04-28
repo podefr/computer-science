@@ -1,5 +1,7 @@
 "use strict";
 
+// disclaimer: this definitely sorts, but it's probably not a true quick sort. Still figuring things out
+
 function quickSort(array) {
     if (array.length < 2) {
         return array;
@@ -35,5 +37,5 @@ function shuffle(array) {
 
 // tests
 console.log(q("QUICKSORT".split("")));
-console.log(q([-10, 3.4, 1, 6.5, 12, -3.14]));
-console.log(q([-10, 3.4, 1, 6.5, 0, -3.14]));
+console.log(q([-10, 3.4, 1, 6.5, 12, 12, -3.14]));
+console.log(q([-10, 3.4, 3.4, 1, 1, 6.5, 0, -3.14]));
