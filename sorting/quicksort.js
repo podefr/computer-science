@@ -25,8 +25,15 @@ function quickSort(array) {
 // golfed ES5, 139 bytes
 function q(u,i,c,k,s){i=u.length;if(i<2)return u;c=u.shift();k=[];s=[];while(--i)(u[0]<c?k:s).push(u.shift());return[].concat(q(k),c,q(s))}
 
+function quickQuickSort(array) {
+    var newArray = [], length;
+    while (length = array.length) {
+        newArray.push(array.splice(~~(Math.random()*length),1));
+    }
+    return newArray;
+}
 
 // tests
-console.log(q("QUICKSORT".split("")));
-console.log(q([-10, 3.4, 1, 6.5, 12, -3.14]));
-console.log(q([-10, 3.4, 1, 6.5, 0, -3.14]));
+console.log(quickQuickSort("QUICKSORT".split("")));
+console.log(quickQuickSort([-10, 3.4, 1, 6.5, 12, -3.14]));
+console.log(quickQuickSort([-10, 3.4, 1, 6.5, 0, -3.14]));
