@@ -25,4 +25,4 @@ function permutate(array) {
     return doPermute(array);
 }
 
-console.log(permutate(["red", "fox", "super"]).length);
+console.log(permutate(["red", "fox", "super"]));
