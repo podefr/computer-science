@@ -1,3 +1,8 @@
+// quick implementation of a MaxHeap
+// will improve this to:
+// - support min heap
+// - use clever algorithm to create a heap from an array
+
 function Heap() {
     const heap = [];
 
@@ -8,6 +13,10 @@ function Heap() {
     };
 
     this.pop = function pop() {
+        if (!heap.length) {
+            return undefined;
+        }
+
         const root = heap.shift();
         const newRoot = heap.pop();
         heap.unshift(newRoot);
