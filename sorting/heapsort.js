@@ -33,3 +33,6 @@ console.log(funkyHeapSort([
     {age: 6, name: 6},
     {age: 5, name: 5},
 ]).map(x => x.name));
+
+console.log(maxHeapSort([13, 11, 12, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6]));
+console.log(minHeapSort([13, 11, 12, 7, 8, 9, 10, 1, 2, 3, 4, 5, 6]));
