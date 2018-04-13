@@ -2,10 +2,10 @@ const matrix = [[ 1, 2, 3, 4 ],
                 [ 5, 6, 7, 8 ],
                 [ 9, 10, 11, 12 ]];
 
-function transpose(matrix) {
+function transpose(matrixToTranspose) {
     const transposed = [];
 
-    matrix.map(row => {
+    matrixToTranspose.forEach(row => {
         row.forEach((item, idx) => {
             transposed[idx] = transposed[idx] || [];
             transposed[idx].push(item);
