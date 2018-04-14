@@ -15,13 +15,9 @@ class LinkedList {
     traverse(callback) {
         let currentNode = this.head;
 
-        while (true) {
+        while (currentNode) {
             callback(currentNode.value);
             currentNode = currentNode.next;
-
-            if (!currentNode) {
-                break;
-            }
         }
     }
 }
