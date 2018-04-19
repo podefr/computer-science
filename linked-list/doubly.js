@@ -32,6 +32,18 @@ class DoublyLinkedList {
             current = current.previous;
         }
     }
+
+    getTraverser() {
+        return function* () {
+            let current = this.head;
+
+            while (current) {
+                let currentValue = current.value;
+                current = current.next;
+                yield currentValue;
+            }
+        }.bind(this)
+    }
 }
 
 class Node {
@@ -45,5 +57,20 @@ class Node {
 const array = [0, 1, 2, 3, 4, 5, 6, 7];
 const linkedList = new DoublyLinkedList(array);
 
+console.log('forward');
+
+
 linkedList.traverse((value) => console.log(value));
+
+console.log('backwards');
+
+
 linkedList.traverseReverse((value) => console.log(value));
+
+console.log('forward with generator function');
+
+const iterator = linkedList.getTraverser();
+
+for (let value of iterator()) {
+    console.log(value);
+}
