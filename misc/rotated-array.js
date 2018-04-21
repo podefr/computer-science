@@ -40,9 +40,6 @@ function unrotate(array) {
         }
     })(0, rotatedArray.length - 1);
 
-
-    console.log(rotationPoint);
-
     return [...array.slice(rotationPoint, array.length), ...array.slice(0, rotationPoint)];
 }
 
