@@ -30,6 +30,22 @@ class BinarySearchTree {
             yield *this.right.traverse();
         }
     }
+
+    dfs(callback) {
+        function inOrder(node, depth) {
+            if (node.left) {
+                inOrder(node.left, depth + 1);
+            }
+
+            callback(node.value, depth);
+
+            if (node.right) {
+                inOrder(node.right, depth + 1);
+            }
+        }
+
+        inOrder(this, 0);
+    }
 }
 
 const bst = new BinarySearchTree(6);
@@ -48,3 +64,7 @@ let value;
 for (value of bst.traverse()) {
     console.log(value);
 }
+
+console.log('-----------');
+
+bst.dfs((value, depth) => console.log(value, depth));
