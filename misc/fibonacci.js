@@ -24,27 +24,91 @@ function memoizedFibonacci(n) {
     return _fibonacci(n);
 }
 
-console.time("non memoized");
+function iterativeFibonnaci(n) {
+    // Array with n items which starts with 0, 1, all subsequent items are 1s so that reduce can run but the values
+    // will be replaced with the appropriate number from the suite
+    const array = new Array(n).fill(1);
+    array[0] = 0;
 
-console.log(fibonacci(1));
-console.log(fibonacci(2));
-console.log(fibonacci(7));
-console.log(fibonacci(15));
-console.log(fibonacci(30));
-console.log(fibonacci(40));
+    array.reduce((previous, current, idx) => {
+        if (idx < 2) return idx;
+        array[idx] = array[idx-1] + array[idx -2];
 
-console.timeEnd("non memoized");
+        return array[idx];
+    }, 0);
 
-console.time("memoized");
+    return array;
+}
 
-console.log(memoizedFibonacci(1));
-console.log(memoizedFibonacci(2));
-console.log(memoizedFibonacci(7));
-console.log(memoizedFibonacci(15));
-console.log(memoizedFibonacci(30));
-console.log(memoizedFibonacci(40));
-console.log(memoizedFibonacci(400));
+// in O(n) time and O(1) space
+function constantSpaceFibonnaci(n) {
+    let previous = 0;
+    let current = 1;
+    let temp;
 
-console.timeEnd("memoized");
+    if (n < 2) {
+        return n;
+    }
 
-// 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...
+    while (n--) {
+        temp = current;
+        current = current + previous;
+        previous = temp;
+    }
+
+    return current;
+}
+
+// in O(n) time and O(1) space using generators
+function *generateFibonnaci() {
+    let previous = 0;
+    let current = 1;
+    let temp;
+
+    yield 0;
+    yield previous;
+    yield current;
+
+    while (true) {
+        temp = current;
+        current = current + previous;
+        previous = temp;
+
+        yield current;
+    }
+}
+
+// console.time("non memoized");
+//
+// console.log(fibonacci(1));
+// console.log(fibonacci(2));
+// console.log(fibonacci(7));
+// console.log(fibonacci(15));
+// console.log(fibonacci(30));
+// console.log(fibonacci(40));
+//
+// console.timeEnd("non memoized");
+//
+// console.time("memoized");
+//
+// console.log(memoizedFibonacci(1));
+// console.log(memoizedFibonacci(2));
+// console.log(memoizedFibonacci(7));
+// console.log(memoizedFibonacci(15));
+// console.log(memoizedFibonacci(30));
+// console.log(memoizedFibonacci(40));
+// console.log(memoizedFibonacci(400));
+//
+// console.timeEnd("memoized");
+//
+// // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...
+// console.log(iterativeFibonnaci(400)[399]);
+console.log(constantSpaceFibonnaci(400));
+
+let iterator = generateFibonnaci();
+
+let i = 10;
+
+while (i--) {
+    console.log(iterator.next().value);
+}
