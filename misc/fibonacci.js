@@ -59,7 +59,7 @@ function constantSpaceFibonnaci(n) {
     return current;
 }
 
-// in O(n) time and O(1) space using generators
+// infinite fibonnaci generator running in O(n) time and O(1) space using generators
 function *generateFibonnaci() {
     let previous = 0;
     let current = 1;
@@ -78,31 +78,31 @@ function *generateFibonnaci() {
     }
 }
 
-// console.time("non memoized");
-//
-// console.log(fibonacci(1));
-// console.log(fibonacci(2));
-// console.log(fibonacci(7));
-// console.log(fibonacci(15));
-// console.log(fibonacci(30));
-// console.log(fibonacci(40));
-//
-// console.timeEnd("non memoized");
-//
-// console.time("memoized");
-//
-// console.log(memoizedFibonacci(1));
-// console.log(memoizedFibonacci(2));
-// console.log(memoizedFibonacci(7));
-// console.log(memoizedFibonacci(15));
-// console.log(memoizedFibonacci(30));
-// console.log(memoizedFibonacci(40));
-// console.log(memoizedFibonacci(400));
-//
-// console.timeEnd("memoized");
-//
-// // 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...
-// console.log(iterativeFibonnaci(400)[399]);
+console.time("non memoized");
+
+console.log(fibonacci(1));
+console.log(fibonacci(2));
+console.log(fibonacci(7));
+console.log(fibonacci(15));
+console.log(fibonacci(30));
+console.log(fibonacci(40));
+
+console.timeEnd("non memoized");
+
+console.time("memoized");
+
+console.log(memoizedFibonacci(1));
+console.log(memoizedFibonacci(2));
+console.log(memoizedFibonacci(7));
+console.log(memoizedFibonacci(15));
+console.log(memoizedFibonacci(30));
+console.log(memoizedFibonacci(40));
+console.log(memoizedFibonacci(400));
+
+console.timeEnd("memoized");
+
+// 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144...
+console.log(iterativeFibonnaci(400)[399]);
 console.log(constantSpaceFibonnaci(400));
 
 let iterator = generateFibonnaci();
