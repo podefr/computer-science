@@ -21,30 +21,68 @@ class BinarySearchTree {
         }
     }
 
-    *traverse() {
+    *traverseInOrder() {
         if (this.left) {
-            yield *this.left.traverse();
+            yield *this.left.traverseInOrder();
         }
+
         yield this.value;
+
         if (this.right) {
-            yield *this.right.traverse();
+            yield *this.right.traverseInOrder();
         }
     }
 
-    dfs(callback) {
-        function inOrder(node, depth) {
-            if (node.left) {
-                inOrder(node.left, depth + 1);
-            }
+    dfs(callback, depth = 0) {
+        if (this.left) {
+            this.dfs.call(this.left, callback, depth + 1);
+        }
 
+        callback(this.value, depth);
+
+        if (this.right) {
+            this.dfs.call(this.right, callback, depth + 1);
+        }
+    }
+
+    bfs(callback, depth = 0, queue = [this]) {
+        let node, children = [];
+
+        while (node = queue.shift()) {
             callback(node.value, depth);
 
+            if (node.left) {
+                children.push(node.left);
+            }
+
             if (node.right) {
-                inOrder(node.right, depth + 1);
+                children.push(node.right);
             }
         }
 
-        inOrder(this, 0);
+        if (children.length) {
+            this.bfs(callback, depth + 1, children);
+        }
+    }
+
+    *traverseBreadthFirst(depth = 0, queue = [this]) {
+        let node, children = [];
+
+        while (node = queue.shift()) {
+            yield { value: node.value, depth };
+
+            if (node.left) {
+                children.push(node.left);
+            }
+
+            if (node.right) {
+                children.push(node.right);
+            }
+        }
+
+        if (children.length) {
+            yield *this.traverseBreadthFirst(depth + 1, children);
+        }
     }
 }
 
@@ -60,11 +98,24 @@ bst.add(9);
 bst.add(0);
 bst.add(4);
 
+console.log('---- DFS generator --');
+
 let value;
-for (value of bst.traverse()) {
+for (value of bst.traverseInOrder()) {
     console.log(value);
 }
 
-console.log('-----------');
+console.log('--- DFS callback ----');
 
 bst.dfs((value, depth) => console.log(value, depth));
+
+console.log('--- BFS callback ----');
+
+bst.bfs((value, depth) => console.log(value, depth));
+
+console.log('---- BFS generator ----');
+
+
+for (value of bst.traverseBreadthFirst()) {
+    console.log(value.value, value.depth);
+}
